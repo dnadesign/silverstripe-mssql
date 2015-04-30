@@ -617,7 +617,7 @@ class MSSQLDatabase extends SS_Database {
 		// this won't drop primary keys, though
 		$indexes = $this->indexNames($tableName);
 		foreach($indexes as $indexName) {
-			$alterCol = "\nIF EXISTS (SELECT name FROM sys.indexes WHERE name = ‘$indexName') DROP INDEX \"$indexName\" ON \"$tableName\";";
+			$alterCol = "\nIF EXISTS (SELECT name FROM sys.indexes WHERE name = \"$indexName\") DROP INDEX \"$indexName\" ON \"$tableName\";";
 		}
 
 		$prefix="ALTER TABLE \"" . $tableName . "\" ";
